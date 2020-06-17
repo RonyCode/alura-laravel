@@ -17,12 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/series', function () {
-    $series = ['flash', 'grays anatomy', 'friends', 'Big Bang Theory'];
-    $html = "<ul>";
-    foreach ($series as $serie) {
-        $html .= "<li>$serie</li>";
-    }
-    $html .= "</ul>";
-    return $html;
-});
+Route::get('/series', 'SeriesController@index');
