@@ -17,4 +17,9 @@ class SeriesController extends Controller
         ];
         return View('series.index', \compact('series'));
     }
+
+    public function create()
+    {
+        return View('series.create');
+    }
 }

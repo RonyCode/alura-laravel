@@ -18,3 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/series', 'SeriesController@index');
+Route::get('/series/adicionar', 'SeriesController@create');
