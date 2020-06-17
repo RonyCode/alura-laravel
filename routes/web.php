@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SeriesController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,4 @@ Route::get('/', function () {
 });
 Route::get('/series', 'SeriesController@index');
 Route::get('/series/adicionar', 'SeriesController@create');
+Route::post('/series/adicionar', 'SeriesController@store');
