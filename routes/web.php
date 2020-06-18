@@ -21,3 +21,4 @@ Route::get('/', function () {
 Route::get('/series', 'SeriesController@index');
 Route::get('/series/adicionar', 'SeriesController@create');
 Route::post('/series/adicionar', 'SeriesController@store');
+Route::delete('/series/{id}', 'SeriesController@destroy');
