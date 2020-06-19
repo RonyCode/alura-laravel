@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/series', 'SeriesController@index');
-Route::get('/series/adicionar', 'SeriesController@create');
+Route::get('/series/adicionar', 'SeriesController@create')->name(
+    'form_criar_serie'
+);
 Route::post('/series/adicionar', 'SeriesController@store');
 Route::delete('/series/{id}', 'SeriesController@destroy');
