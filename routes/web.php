@@ -17,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/series', 'SeriesController@index');
+
+Route::get('/series', 'SeriesController@index')->name('listar_cursos');
+
 Route::get('/series/adicionar', 'SeriesController@create')->name(
     'form_criar_serie'
 );
+
 Route::post('/series/adicionar', 'SeriesController@store');
+
 Route::delete('/series/{id}', 'SeriesController@destroy');

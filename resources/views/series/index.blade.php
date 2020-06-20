@@ -12,22 +12,21 @@ Minhas Series Favoritas
 </div>
 @endif
 
-<a name="adiciona" id="adiciona" class="btn btn-primary mb-2" href="/series/adicionar" role="button">Adicionar</a>
+<a class="btn btn-primary mb-2" href="{{ route('form_criar_serie') }}">Adicionar</a>
 
 <ul class="list-group ">
-
     @foreach ($series as $serie)
-    <li class="list-group-item">{{$serie->nome}}
-
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{$serie->nome}}
         <form action="/series/{{$serie->id}}" method="post"
             onsubmit="return confirm('Tem certeza que deseja remover{{addslashes ($serie->nome)}} ?')">
-
             @csrf
             @method('DELETE')
-            <button class="btn btn-danger float-right">Excluir</button>
+            <button class="btn btn-danger btn-sm">
+                <i class="far fa-trash-alt"></i>
+            </button>
         </form>
     </li>
-
     @endforeach
 </ul>
 @endsection
