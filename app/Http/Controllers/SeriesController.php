@@ -56,4 +56,12 @@ class SeriesController extends Controller
             ->flash('mensagem', "Serie $nomeSerie foi removida com sucesso!");
         return \redirect()->route('listar_cursos');
     }
+
+    public function editaNome(int $id, Request $request)
+    {
+        $novoNome = $request->nome;
+        $serie = Serie::find($id);
+        $serie->nome = $novoNome;
+        $serie->save();
+    }
 }
