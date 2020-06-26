@@ -13,6 +13,10 @@ use App\Temporada;
 
 class SeriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(Request $request)
     {
         $series = Serie::query()
@@ -43,7 +47,7 @@ class SeriesController extends Controller
                 'mensagem',
                 "Série: {$serie->id} titulo: {$serie->nome} e suas temporadas e episódios criada com sucesso!"
             );
-        return \redirect()->route('listar_cursos');
+        return \redirect()->route('listar_series');
     }
     public function destroy(
         Request $request,
@@ -54,7 +58,7 @@ class SeriesController extends Controller
         $request
             ->session()
             ->flash('mensagem', "Serie $nomeSerie foi removida com sucesso!");
-        return \redirect()->route('listar_cursos');
+        return \redirect()->route('listar_series');
     }
 
     public function editaNome(int $id, Request $request)

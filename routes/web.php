@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/series', 'SeriesController@index')->name('listar_cursos');
+Route::get('/series', 'SeriesController@index')->name('listar_series');
 
 Route::get('/series/adicionar', 'SeriesController@create')->name(
     'form_criar_serie'
@@ -34,3 +34,8 @@ Route::post(
     '/temporadas/{temporada}/episodios/assistir',
     'EpisodiosController@assistir'
 );
+Route::get('/entrar', 'EntrarController@index');
+Route::post('/entrar', 'EntrarController@entrar');
+
+Route::get('/registrar', 'RegistroController@create');
+Route::post('/registrar', 'RegistroController@store');

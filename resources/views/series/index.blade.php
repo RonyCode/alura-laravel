@@ -6,11 +6,7 @@ Minhas Series Favoritas
 
 @section('body')
 
-@if(!empty($mensagem))
-<div class="alert alert-success">
-    {{$mensagem}}
-</div>
-@endif
+@include('mensagem', ['mensagem' => $mensagem])
 
 <a class="btn btn-primary mb-2" href="{{ route('form_criar_serie') }}">Adicionar</a>
 
