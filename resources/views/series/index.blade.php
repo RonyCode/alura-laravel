@@ -8,7 +8,9 @@ Minhas Series Favoritas
 
 @include('mensagem', ['mensagem' => $mensagem])
 
+@auth
 <a class="btn btn-primary mb-2" href="{{ route('form_criar_serie') }}">Adicionar</a>
+@endauth
 
 <ul class="list-group ">
     @foreach ($series as $serie)
@@ -26,13 +28,18 @@ Minhas Series Favoritas
         </div>
 
         <span class="d-flex">
+
+            @auth
             <button class="btn btn-info btn-sm mr-1" onclick="toggleInput({{ $serie->id }})">
                 <i class="fas fa-edit"></i>
             </button>
+
+            @endauth
             <a href="/series/{{$serie->id}}/temporadas" class="btn btn-info btn-sm mr-1">
                 <i class="fas fa-external-link-alt"></i>
             </a>
 
+            @auth
             <form action="/series/{{$serie->id}}" method="post"
                 onsubmit="return confirm('Tem certeza que deseja remover{{addslashes ($serie->nome)}} ?')">
                 @csrf
@@ -41,6 +48,8 @@ Minhas Series Favoritas
                     <i class="far fa-trash-alt"></i>
                 </button>
             </form>
+            @endauth
+
         </span>
     </li>
     @endforeach

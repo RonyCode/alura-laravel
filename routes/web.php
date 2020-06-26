@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use App\Http\Middleware\Autenticador;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeriesController;
 use Illuminate\Routing\Route as RoutingRoute;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,22 +22,33 @@ Route::get('/', function () {
 
 Route::get('/series', 'SeriesController@index')->name('listar_series');
 
-Route::get('/series/adicionar', 'SeriesController@create')->name(
-    'form_criar_serie'
-);
+Route::get('/series/adicionar', 'SeriesController@create')
+    ->name('form_criar_serie')
+    ->middleware('autenticador');
 
-Route::post('/series/adicionar', 'SeriesController@store');
-Route::delete('/series/{id}', 'SeriesController@destroy');
-Route::post('/series/{id}/editaNome', 'SeriesController@editaNome');
+Route::post('/series/adicionar', 'SeriesController@store')->middleware(
+    'autenticador'
+);
+Route::delete('/series/{id}', 'SeriesController@destroy')->middleware(
+    'autenticador'
+);
+Route::post('/series/{id}/editaNome', 'SeriesController@editaNome')->middleware(
+    'autenticador'
+);
 
 Route::get('/series/{serieId}/temporadas', 'TemporadasController@index');
 Route::get('/temporadas/{temporada}/episodios', 'EpisodiosController@index');
 Route::post(
     '/temporadas/{temporada}/episodios/assistir',
     'EpisodiosController@assistir'
-);
-Route::get('/entrar', 'EntrarController@index');
+)->middleware('autenticador');
+Route::get('/entrar', 'EntrarController@index')->name('login');
 Route::post('/entrar', 'EntrarController@entrar');
 
 Route::get('/registrar', 'RegistroController@create');
 Route::post('/registrar', 'RegistroController@store');
+
+Route::get('/sair', function () {
+    Auth::logout();
+    return redirect('/entrar');
+});
