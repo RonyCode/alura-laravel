@@ -2,18 +2,16 @@
 
 namespace Tests\Feature;
 
+use App\Serie;
 use App\Services\CriadorDeSeries;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CriadorDeSerieTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+    use RefreshDatabase;
+
     public function testCriarSerie()
     {
         $criadorDeSerie = new CriadorDeSeries();

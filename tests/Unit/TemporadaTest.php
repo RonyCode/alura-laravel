@@ -4,16 +4,13 @@ namespace Tests\Unit;
 
 use App\Episodio;
 use App\Temporada;
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TemporadaTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-
+    /** @var Temporada */
     private $temporada;
 
     protected function setUp(): void
@@ -36,11 +33,13 @@ class TemporadaTest extends TestCase
     public function testBuscaPorEpisodiosAssistidos()
     {
         $episodiosAssistidos = $this->temporada->getEpisodiosAssistidos();
+
         $this->assertCount(2, $episodiosAssistidos);
         foreach ($episodiosAssistidos as $episodio) {
             $this->assertTrue($episodio->assistido);
         }
     }
+
     public function testBuscaTodosOsEpisodios()
     {
         $episodios = $this->temporada->episodios;
