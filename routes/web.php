@@ -42,7 +42,7 @@ Route::post(
     '/temporadas/{temporada}/episodios/assistir',
     'EpisodiosController@assistir'
 )->middleware('autenticador');
-Route::get('/entrar', 'EntrarController@index')->name('login');
+Route::get('/entrar', 'EntrarController@index');
 Route::post('/entrar', 'EntrarController@entrar');
 
 Route::get('/registrar', 'RegistroController@create');

@@ -19,6 +19,7 @@ class EntrarController extends Controller
                 'Usuário ou senha incorretos'
             );
         }
+
         return \redirect()->route('listar_series');
     }
 }
