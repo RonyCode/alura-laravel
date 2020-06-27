@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use App\Episodio;
 use App\Temporada;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

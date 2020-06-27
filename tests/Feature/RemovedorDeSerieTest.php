@@ -3,9 +3,9 @@
 namespace Tests\Feature;
 
 use App\Serie;
+use Tests\TestCase;
 use App\Services\CriadorDeSeries;
 use App\Services\RemovedorDeSeries;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

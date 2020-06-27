@@ -14,9 +14,9 @@ class CreateTemporadasTable extends Migration
     public function up()
     {
         Schema::create("temporadas", function (Blueprint $table) {
-            $table->bigIncrements("id");
+            $table->increments("id");
             $table->integer("numero");
-            $table->bigInteger("serie_id")->unsigned();
+            $table->integer("serie_id");
 
             $table
                 ->foreign("serie_id")
